@@ -7,11 +7,10 @@
     <style>
         #visualization-title h1 {
         text-align: center;
-        margin-bottom: 20px; /* Adjust spacing as needed */
-        font-family: Arial, sans-serif; /* Choose your preferred font */
+        margin-bottom: 20px; 
+        font-family: Arial, sans-serif; 
 
 }
-        /* Adjusted styles for a grid layout */
         .map-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
@@ -20,12 +19,12 @@
         }
         .map-container svg {
             width: 470px;
-            height: 400px; /* Adjust based on your preference */
+            height: 400px; 
             background-color: #f1f8db; /* Light background for each map */
             border: 1px solid #ccc; /* Subtle border */
-            border-radius: 5px; /* Optional: adds rounded corners for a softer look */
+            border-radius: 5px; /* rounded corners for a softer look */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            margin-top: 10px; /* Ensure some space around each map for clarity */
+            margin-top: 10px; /* some space around each map for clarity */
         }
         .neighborhood {
             fill: none;
@@ -193,8 +192,8 @@ function drawTrees3(svg, data) {
        .attr("fill", d => colorScale(d.qCaretaker)); // Use the custom color scale
 
     svg.append("text")
-        .attr("x", 10) // Adjust position based on your layout
-        .attr("y", 50) // Adjust position based on your layout
+        .attr("x", 10) 
+        .attr("y", 50) 
         .text(`New Trees: ${data.length}`) // Display the count
         .attr("font-family", "Arial, sans-serif")
         .attr("font-size", "14px")
@@ -212,8 +211,8 @@ function drawTrees3(svg, data) {
 
     labels.forEach(l => {
         l.svg.append("text")
-        .attr("x", 10) // Position as needed
-        .attr("y", 25) // Position as needed
+        .attr("x", 10)
+        .attr("y", 25) 
         .text(l.label)
         .attr("font-family", "sans-serif")
         .attr("font-size", "20px")
@@ -257,18 +256,18 @@ function createLegend(caretakers) {
 }
 
 const sizeScale = d3.scaleLinear()
-    .domain([d3.min(data, d => d.DBH), d3.max(data, d => d.DBH)]) // Assuming data is your dataset
-    .range([2, 10]); // Example size range from minimum to maximum size
+    .domain([d3.min(data, d => d.DBH), d3.max(data, d => d.DBH)]) 
+    .range([2, 10]); 
 
 function createSizeLegend() {
-    const svgLegendSize = d3.select("#legend-size"); // Assuming you have an SVG with this ID for the size legend
-    const exampleSizes = [2, 6, 10]; // Example sizes for small, medium, and large
-    const exampleLabels = ["Small", "Medium", "Large"]; // Corresponding labels
+    const svgLegendSize = d3.select("#legend-size"); 
+    const exampleSizes = [2, 6, 10]; 
+    const exampleLabels = ["Small (0-20 cm DBH)", "Medium (21-100 cm DBH)", "Large (>100 cm DBH)"]; 
 
     // Position settings
     const xOffsetStart = 200;
     const yOffset = 20;
-    const xSpacing = 100;
+    const xSpacing = 200;
 
     exampleSizes.forEach((size, i) => {
         // Draw circles for each size
@@ -276,8 +275,8 @@ function createSizeLegend() {
             .attr("cx", xOffsetStart + i * xSpacing)
             .attr("cy", yOffset)
             .attr("r", size)
-            .style("fill", "lightgrey") // Example fill, adjust as needed
-            .style("stroke", "black"); // Example stroke, adjust as needed
+            .style("fill", "lightgrey")
+            .style("stroke", "black");
 
         // Add labels below circles
         svgLegendSize.append("text")
@@ -301,8 +300,8 @@ const labels = [
 
 labels.forEach(l => {
     l.svg.append("text")
-       .attr("x", 10) // Position as needed
-       .attr("y", 25) // Position as needed
+       .attr("x", 10) 
+       .attr("y", 25) 
        .text(l.label)
        .attr("font-family", "sans-serif")
        .attr("font-size", "20px")
